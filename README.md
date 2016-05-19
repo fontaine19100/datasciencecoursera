@@ -1,6 +1,7 @@
 ===================================================================
 ##README of the project ending the getting and cleaning data course
 ===================================================================
+
 The first part of the program checks whether or not the working directory exists. If not, we create it via
 dir.create, then we store into the variable url1 the url adress where we can download the file.
 We then download the file via download.file; and finally, as the downloaded file is a zip file, we unzip it
