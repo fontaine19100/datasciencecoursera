@@ -1,7 +1,6 @@
 ===================================================================
 ##README of the project ending the getting and cleaning data course
 ===================================================================
-
 The first part of the program checks whether or not the working directory exists. If not, we create it via
 dir.create, then we store into the variable url1 the url adress where we can download the file.
 We then download the file via download.file; and finally, as the downloaded file is a zip file, we unzip it
@@ -28,7 +27,8 @@ The fourth part of the code has the aim to rename every single type of signal by
 
 The last part of the code, fifth part, is aimed to produce a second tidy dataset with the average of each variable for each activity and each subject.
 For this we make use of split on our reduced dataframe to create a list based on 2 levels : the activity identifier and the volunteer(subject) identifier.
-Then, using lapply we make the mean of each columns of the dataset containing the 10299 measurements for each of the 561 signals. 
-Once this is done, we convert the result into a dataframe using as.data.frame since our result is a list.
-In order to keep the same format of our previous datasets, we transpose it. It means that instead of having the names of the 563 variables of our dataset in rows, we prefer to have them in columns.
+Then, using sapply we make the mean of each columns of the dataset containing the 10299 measurements for each of the 561 signals. 
+Once this is done, we transpose the matrix to get as rows the identifiers (volunteer and experiment in the format volunteer.experiment) and the variables as columns.
+Then, we convert the result into a dataframe using as.data.frame since our result is a matrix.
 Finally, we export the final tidy dataset in a txt file, using the write.table command, specifying row.names = F and col.names = T, so that we disallow the names of rows which are totally unsignificant.
+Eventually, we read once again the dataset written, taking care to specify header=T, meaning that R knows that the first row just indicates the names of the variables.
