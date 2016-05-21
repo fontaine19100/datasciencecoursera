@@ -72,12 +72,12 @@ names(mergedData2)<-gsub("fBodyBodyGyroJerkMag-","angular_velocity_Jerk_magnitud
 #we split the dataframe into a list with 2 levels : the volunteer indentifier(1 to 30) and the type of
 #experiment (1 to 6)
 mylist<-split(mergedData2,list(mergedData2$volunteer_identifier,mergedData2$type_of_experiment))
-#then we calculate the mean of each activities using lapply and a anomymous function
+#then we calculate the mean of each activities using sapply and a anomymous function, we transpose the result
+#to get as columns of the resulting matrix the names of the physical variables
 average_activities<-t(sapply(mylist,function(x) colMeans(x)))
-#finally we convert the result into a dataframe and we transpose it to stay with the same format as before
+#finally we convert the result into a dataframe
 average_dataset<-as.data.frame(average_activities)
-#we export the dataset
-
 setwd("/home/yoda/Desktop/dataanalysiscourse/thirdunit")
+#we export the dataset
 write.table(average_dataset,file="final_tidy_dataset.txt",row.names = F, col.names = T)
 finaldataset<-read.table("final_tidy_dataset.txt",header=T)
