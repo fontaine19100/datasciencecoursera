@@ -64,5 +64,6 @@ names(mergedData2) : rename of each of the variable in the mergedData2 dataset :
 * all fBodyAcc signals are replaced by angular_velocity_Jerk_magnitude_postFFT signals
 
 mylist : list created by splitting the dataset mergedData2 with respect to 2 levels (volunteer_identifier and type_of_experiment)
-average_activities : average of the measurements of the mean and std for each activity and volunteer
+average_activities : matrix containing the average of the measurements of the mean and std for each activity and volunteer as columns and an indicator of volunteer identifier and type of experiment realized (e.g 1.2 means first volunteer and second experiment) as rows.
 average_dataset : dataset containing each volunteer number (1 to 30), each type of activity he realized, and the mean and std of every signal.
+finaldataset: it is not required, but it is just the finaldataset, once written into the file that we reload to R. We take care (very important) to specify header=T as argument as it will indicate to R that the fist line is just the names of the variables.
